@@ -1,0 +1,37 @@
+{% include "inc/header.html" %}
+
+<div class="container" style="flex: 1;">
+    <h1 class="titulo-inicio mt-5">Inicio de Sesión</h1>
+
+    {% if messages %}
+        <p style="color: red; text-align:center;"> 
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 margen">
+                    <div class="form-floating">
+                        <input type="text" name="username" class="form-control borde-input" placeholder="Nombre usuario" id="floatingInputUsuario" autocomplete="username">
+                        <label for="floatingInputUsuario">Cédula</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-12 margen mt-2">
+                    <div class="form-floating">
+                        <input type="password" name="password" class="form-control borde-input" placeholder="Contraseña" id="floatingInputContrasena" autocomplete="current-password">
+                        <label for="floatingInputContrasena">Contraseña</label>   
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light boton-iniciar">Iniciar sesión</button>
+        </form>
+    </div>
+</div>
+
+{% include "inc/footer.html" %}

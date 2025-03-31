@@ -1,0 +1,38 @@
+body {
+    
+    font-family: 'Times New Roman', Times, serif; /* Tipografía moderna y legible */
+}
+.card {
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más marcada */
+    margin-bottom: 20px;
+    overflow: hidden; /* Para evitar saltos y desbordamientos */
+}
+.card-img-top {
+    border-radius: 15px 15px 0 0; /* Bordes redondeados en la imagen */
+    height: 200px;
+    object-fit: cover; /* Para que las imágenes se ajusten al contenedor */
+}
+.list-group-item {
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+}
+.card-title {
+    color: rgb(6, 158, 6);
+    font-weight: bold;
+}
+.card-text {
+    color: #555; /* Color más suave para el texto secundario */
+}
+.no-data {
+    text-align: center;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .form-hora {
+        margin: 50% auto  !important;
+    }
+
+}

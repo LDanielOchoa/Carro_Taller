@@ -1,0 +1,63 @@
+.links-menu {
+    color: rgb(6, 158, 6);
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    margin: 0 5px;
+    white-space: nowrap;
+}
+
+.links-menu:hover {
+    text-decoration: underline black;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 600px) {
+    body {
+        overflow-x: auto;
+        /* Permite el desplazamiento horizontal para todo el contenido */
+    }
+
+    .navbar {
+        position: relative;
+        /* Cambia el navbar para que sea parte del flujo normal */
+        overflow-x: auto;
+        /* Permite que el navbar sea desplazable junto con el contenido */
+        white-space: nowrap;
+        /* Asegura que no se rompan los elementos dentro del navbar */
+    }
+
+    .table-container {
+        overflow-x: auto;
+        /* Permite que la tabla sea desplazable horizontalmente */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        overflow-x: auto;
+        /* Permite el desplazamiento horizontal para todo el contenido */
+    }
+
+    .navbar {
+        position: relative;
+        /* Cambia el navbar para que sea parte del flujo normal */
+        overflow-x: auto;
+        /* Permite que el navbar sea desplazable junto con el contenido */
+        white-space: nowrap;
+        /* Asegura que no se rompan los elementos dentro del navbar */
+    }
+
+    .table-container {
+        overflow-x: auto;
+        /* Permite que la tabla sea desplazable horizontalmente */
+    }
+}

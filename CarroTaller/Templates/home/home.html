@@ -1,0 +1,16 @@
+{% include "inc/header.html" %}
+<div class="container mt-5 home" style="flex: 1;">
+    <h1 class="text-center titulo-insertar">Bienvenido al Sistema para el Control del Carro Taller</h1>
+
+    {% if registro_pendiente %}
+    <div class="text-center mt-4">
+        <p>Existe un registro pendiente por completar. Por favor, ingresa la <strong>hora de entrada</strong>.</p>
+        <a href="{% url 'ingresar_hora_entrada' registro_pendiente.id %}" class="btn btn-light boton-guardar">Completar Registro</a>
+    </div>
+    {% else %}
+    <div class="alert alert-success text-center mt-4">
+        <p>No hay registros pendientes.</p>
+    </div>
+    {% endif %}
+</div>
+{% include "inc/footer.html" %}

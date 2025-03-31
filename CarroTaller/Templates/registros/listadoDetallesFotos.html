@@ -1,0 +1,49 @@
+{% include 'inc/header.html' %}
+
+<div class="container mt-4" style="flex: 1;">
+    <h1 class="titulo-listado mt-5">Detalle del Carro - Registro #{{ registro.id }}</h1>
+
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">Partes dañadas</h4>
+            {% if partes_danadas %}
+                <ul class="list-group">
+                    {% for parte in partes_danadas %}
+                        <li class="list-group-item">
+                            <strong>Descripción:</strong> {{ parte.descripcion }}<br>
+                            <strong>Estado:</strong> {{ parte.estado }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-data">No hay partes dañadas registradas.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Evidencias Fotográficas</h4>
+            {% if fotos_relacionadas %}
+                <div class="row">
+                    {% for foto in fotos_relacionadas %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="{{ foto.url }}" class="card-img-top" alt="{{ foto.parte }}">
+                                <div class="card-body">
+                                    <p class="card-text"><strong>Parte:</strong> {{ foto.parte }}</p>
+                                    <p class="card-text"><strong>Estado:</strong> {{ foto.estado }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-data">No hay fotos registradas .</p>
+            {% endif %} 
+        </div>
+    </div>
+</div>
+
+{% include 'inc/footer.html' %}

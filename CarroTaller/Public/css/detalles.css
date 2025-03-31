@@ -1,0 +1,121 @@
+.photo-upload {
+    display: none;
+    margin-top: 10px;
+}
+
+/* Contenedor del campo */
+.parte-detalle {
+    background-color: #f9f9f9;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Ancho fijo para todos los campos */
+    height: 170px; /* Alto fijo para todos los campos */
+    overflow: hidden; /* Oculta cualquier contenido que sobresalga */
+  }
+  
+  /* Título del campo */
+  .parte-detalle p {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+  }
+  
+  /* Select (campo de selección) */
+  .estado-parte {
+    padding: 10px;
+    border: 2px solid green;
+    border-radius: 5px;
+    font-size: 14px;
+    color: green;
+    background-color: #fff;
+    width: 100%; /* Ajusta al ancho del contenedor */
+    height: 40px; /* Altura fija para todos los selects */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  /* Hover para el select */
+  .estado-parte:hover {
+    border-color: darkgreen;
+  }
+  
+  /* Opciones del select */
+  .estado-parte option {
+    font-size: 14px;
+    color: black;
+  }
+
+
+  #selecciones {
+    margin-top: 20px auto;
+    border: 2px solid #4CAF50; /* Borde verde */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno reducido */
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+#selecciones h3 {
+    color: #4CAF50; /* Título verde */
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 8px; /* Espaciado reducido */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1em; /* Tamaño más pequeño */
+}
+
+#lista-selecciones {
+    list-style-position: inside; /* Números alineados con el texto */
+    margin: 0;
+    padding: 0;
+}
+
+#lista-selecciones li {
+    margin-bottom: 6px; /* Espacio entre elementos reducido */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.9em; /* Tamaño de texto más compacto */
+    color: #333; /* Texto oscuro */
+    border-bottom: 1px solid #ddd; /* Separador entre elementos */
+    padding: 3px 0; /* Espaciado interno más pequeño */
+}
+
+#lista-selecciones li:last-child {
+    border-bottom: none; /* Sin borde en el último elemento */
+}
+  
+.tamano-form {
+    width: 25%; /* Ancho por defecto en pantallas grandes */
+    margin: auto; /* Centra horizontalmente */
+}
+
+.contenedor-centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .tamano-form {
+        width: 90%; /* Usa casi todo el ancho disponible */
+    }
+
+    .parte-detalle{
+        margin-left: 14%;
+        margin-top: 35%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .tamano-form {
+        width: 80%;
+    }
+}

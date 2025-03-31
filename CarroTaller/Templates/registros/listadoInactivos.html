@@ -1,0 +1,149 @@
+{% include "inc/header.html" %}
+
+<div class="container letra-listado" style="flex: 1;">
+  <h1 class="titulo-listado mt-5">Listado de registros</h1>
+
+  <input type="text" id="search" placeholder="Buscar un registro..." class="search-bar busqueda">
+
+
+  <div class="table-container">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Vigilante Asignado</th>
+          <th>Nombre del Operador</th>
+          <th>Fecha del registro</th>
+          <th>Hora Salida</th>
+          <th>Hora Entrada</th>
+          <th>Motivo de Salida</th>
+          <th>Autorización</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaRegistros">
+        {% for registro in registros %}
+        <tr data-id="{{ registro.id }}">
+          <td>{{ registro.id }}</td>
+          <td>{{ registro.vigilante_asignado.first_name }}</td>
+          <td>{{ registro.nombre_operador }}</td>
+          <td>{{ registro.fecha }}</td>
+          <td>{{ registro.hora_salida }}</td>
+          <td>{{ registro.hora_entrada }}</td>
+          <td>{{ registro.motivo_salida }}</td>
+          <td>{{ registro.autorizacion }}</td>
+          <td>
+            <a href="#" class="ver-mas" data-id="{{ registro.id }}" title="Ver más">
+              <i class="fa fa-eye icono" aria-hidden="true"></i>
+            </a>
+        
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="8">No hay registros disponibles.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade letra-listado" id="modalInformacion" tabindex="-1" aria-labelledby="modalInformacionLabel"
+  aria-hidden="true" style="text-align: center;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title titulo-listado" id="modalInformacionLabel">Información del Registro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body fw-bold">
+        <p id="id"></p>
+        <p id="vigilante"></p>
+        <p id="cedulaOperador"></p>
+        <p id="codigoOperador"></p>
+        <p id="nombreOperador"></p>
+        <p id="cedulaAcompanante"></p>
+        <p id="nombreAcompanante"></p>
+        <p id="cargoAcompanante"></p>
+        <p id="fecha"></p>
+        <p id="horaSalida"></p>
+        <p id="horaEntrada"></p>
+        <p id="motivoSalida"></p>
+        <p id="autorizacion"></p>
+        <p id="observaciones"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light boton-guardar" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Seleccionamos todos los íconos de "Ver más"
+    const verMasButtons = document.querySelectorAll('.ver-mas');
+
+    // Agregar el evento click a cada uno
+    verMasButtons.forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevenir la acción por defecto (no navegar a ninguna parte)
+
+        // Obtener el id del registro desde el atributo data-id
+        const registroId = this.getAttribute('data-id');
+
+        // Hacer una solicitud AJAX a Django para obtener los datos del registro
+        fetch(`/registros/informacionRegistro/${registroId}/`)
+          .then(response => response.json())
+          .then(data => {
+            // Poner los datos en los campos del modal
+            document.getElementById('id').textContent = `ID: ${data.id}`;
+            document.getElementById('vigilante').textContent = `Vigilante: ${data.vigilante_asignado}`;
+            document.getElementById('cedulaOperador').textContent = `Cédula Operador: ${data.cedula_operador}`;
+            document.getElementById('codigoOperador').textContent = `Código Operador: ${data.codigo_operador}`;
+            document.getElementById('nombreOperador').textContent = `Operador: ${data.nombre_operador}`;
+            document.getElementById('cedulaAcompanante').textContent = `Cédula Acompanante: ${data.cedula_acompanante}`;
+            document.getElementById('nombreAcompanante').textContent = `Acompañante: ${data.nombre_acompanante}`;
+            document.getElementById('cargoAcompanante').textContent = `Cargo Acompañante: ${data.cargo_acompanante}`;
+            document.getElementById('fecha').textContent = `Fecha: ${data.fecha}`;
+            document.getElementById('horaSalida').textContent = `Hora de Salida: ${data.hora_salida}`;
+            document.getElementById('horaEntrada').textContent = `Hora de Entrada: ${data.hora_entrada}`;
+            document.getElementById('motivoSalida').textContent = `Motivo de Salida: ${data.motivo_salida}`;
+            document.getElementById('autorizacion').textContent = `Autorización: ${data.autorizacion}`;
+            document.getElementById('observaciones').textContent = `Observaciones: ${data.observaciones}`;
+            // Mostrar el modal
+            const modal = new bootstrap.Modal(document.getElementById('modalInformacion'));
+            modal.show();
+          })
+          .catch(error => {
+            console.error('Error al cargar la información:', error);
+          });
+      });
+    });
+  });
+
+  document.getElementById('search').addEventListener('input', function () {
+    var query = this.value.toLowerCase(); // Convertir a minúsculas para la búsqueda insensible a mayúsculas
+    var rows = document.querySelectorAll('#tablaRegistros tr'); // Obtener todas las filas de la tabla
+
+    rows.forEach(function (row) {
+      var fecha = row.cells[1].textContent.toLowerCase(); // Obtenemos la fecha
+      var horaSalida = row.cells[2].textContent.toLowerCase(); // Obtenemos la hora de salida
+      var horaEntrada = row.cells[3].textContent.toLowerCase(); // Obtenemos la hora de entrada
+      var nombreOperador = row.cells[8].textContent.toLowerCase(); // Obtenemos el nombre del operador (9ª columna)
+
+      // Si algún campo coincide con la búsqueda, mostramos la fila
+      if (fecha.includes(query) || horaSalida.includes(query) || horaEntrada.includes(query) || nombreOperador.includes(query)) {
+        row.style.display = ''; // Muestra la fila
+      } else {
+        row.style.display = 'none'; // Oculta la fila
+      }
+    });
+  });
+
+</script>
+
+{% include "inc/footer.html" %}

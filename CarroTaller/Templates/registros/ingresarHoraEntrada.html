@@ -1,0 +1,69 @@
+{% include "inc/header.html" %}
+
+<div class="container letra-insertar centrado-formulario form-hora" style="flex: 1;">
+    <h1 class="titulo-insertar mt-5">Completar Hora Entrada</h1>
+    <div class="formulario">
+        {% if messages %}
+        <div style="text-align: center;">
+            {% for message in messages %}
+                <p class="{% if message.tags == 'error' %}mensaje-error{% endif %}">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="POST" class="tamano-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12 margen">
+                    <div class="form-floating">
+                        <input type="time" name="hora_entrada"
+                            class="form-control borde-input hora_entrada {% if form.errors.hora_entrada %}is-invalid{% endif %}"
+                            id="floatingInputHoraEntrada" placeholder="Hora de entrada"
+                            value="{{ request.POST.hora_entrada|default:'' }}">
+                        <label for="floatingInputHoraEntrada">Hora de entrada</label>
+                        {% if form.hora_entrada.errors %}
+                        <div class="text-danger">
+                            {% for error in form.hora_entrada.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 margen">
+                    <div class="form-floating">
+                        <input type="number" name="kilometraje_entrada"
+                            class="form-control borde-input {% if form.errors.kilometraje_entrada %}is-invalid{% endif %}"
+                            id="floatingInputKilometrajeEntrada" placeholder="Kilometraje de entrada"
+                            value="{{ request.POST.kilometraje_entrada|default:'' }}">
+                        <label for="floatingInputKilometrajeEntrada">Kilometraje de Entrada</label>
+                        {% if form.kilometraje_entrada.errors %}
+                        <div class="text-danger">
+                            {% for error in form.kilometraje_entrada.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-light boton-guardar mt-2">Guardar Hora</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const horaInputs = document.getElementsByClassName('hora_entrada');
+        const horaActual = new Date().toTimeString().split(' ')[0].slice(0, 5);  // Formato HH:MM
+        for (let horaInput of horaInputs) {
+            horaInput.value = horaActual;  // Establece la hora actual
+            horaInput.setAttribute('readonly', true); // Hacer que el campo de hora sea solo lectura
+        }
+    });
+</script>
+
+{% include "inc/footer.html" %}

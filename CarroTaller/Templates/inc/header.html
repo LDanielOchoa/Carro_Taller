@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>Control Carro Taller</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/detallesyfotos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/insertar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/listado.css' %}">
+  <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+  <link rel="icon" href="{% static 'img/logo.png' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <style>
+    .header {
+      position: fixed;
+      /* Fija el menú */
+      top: 0;
+      /* Lo alinea al inicio de la pantalla */
+      left: 0;
+      /* Lo alinea a la izquierda */
+      width: 100%;
+      /* Ocupa todo el ancho */
+      z-index: 1050;
+      /* Prioridad alta sobre otros elementos */
+      background-color: #f8f9fa;
+      /* Color de fondo (ajústalo según el diseño) */
+      border-bottom: 1px solid #ddd;
+      /* Opcional: una línea de separación */
+    }
+
+    body {
+      padding-top: 90px;
+      /* Ajusta según la altura del navbar */
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light letra header">
+    <div class="container-fluid main-container">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" width="250" height="80" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex justify-content-between align-items-center">
+          <li class="nav-item">
+            <a class="nav-link fw-bold links-menu" href="{% url 'crear' %}">Crear Usuario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold links-menu" href="{% url 'insertar' %}">Nuevo Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold links-menu" href="{% url 'listado' %}">Registros Activos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold links-menu" href="{% url 'listadoInactivos' %}">Registros Inactivos</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link fw-bold links-menu" href="{% url 'logout' %}">Cerrar Sesión</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  
+

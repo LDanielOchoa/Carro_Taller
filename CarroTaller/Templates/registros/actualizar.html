@@ -1,0 +1,309 @@
+{% include "inc/header.html" %}
+
+<div class="container letra-insertar" style="flex: 1;">
+    <h1 class="titulo-insertar mt-5">Actualizar Registro</h1>
+    
+    <div class="formulario">
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="number" name="cedula_operador"
+                            class="form-control borde-input {% if form.cedula_operador.errors %}is-invalid{% endif %}"
+                            id="floatingInputCedulaOperador" placeholder="Cédula del operador"
+                            value="{{ form.cedula_operador.value }}">
+                        <label for="floatingInputCedulaOperador">Cédula del operador</label>
+                        {% if form.cedula_operador.errors %}
+                        <div class="text-danger">
+                            {% for error in form.cedula_operador.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+              
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="number" name="codigo_operador"
+                            class="form-control borde-input {% if form.codigo_operador.errors %}is-invalid{% endif %}"
+                            id="floatingInputCodigoOperador" placeholder="Código del operador"
+                            value="{{ form.codigo_operador.value }}">
+                        <label for="floatingInputCodigoOperador">Código del operador</label>
+                        {% if form.codigo_operador.errors %}
+                        <div class="text-danger">
+                            {% for error in form.codigo_operador.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="text" name="nombre_operador"
+                            class="form-control borde-input {% if form.nombre_operador.errors %}is-invalid{% endif %}"
+                            id="floatingInputNombreOperador" placeholder="Nombre del operador"
+                            value="{{ form.nombre_operador.value }}">
+                        <label for="floatingInputNombreOperador">Nombre del operador</label>
+                        {% if form.nombre_operador.errors %}
+                        <div class="text-danger">
+                            {% for error in form.nombre_operador.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="text" name="cedula_acompanante"
+                            class="form-control borde-input {% if form.cedula_acompanante.errors %}is-invalid{% endif %}"
+                            id="floatingInputCedulaAcompanante" placeholder="Cédula del acompañante"
+                            value="{{ form.cedula_acompanante.value }}">
+                        <label for="floatingInputCedulaAcompanante">Cédula del acompañante</label>
+                        {% if form.cedula_acompanante.errors %}
+                        <div class="text-danger">
+                            {% for error in form.cedula_acompanante.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="text" name="nombre_acompanante"
+                            class="form-control borde-input {% if form.nombre_acompanante.errors %}is-invalid{% endif %}"
+                            id="floatingInputNombreAcompanante" placeholder="Nombre del acompañante"
+                            value="{{ form.nombre_acompanante.value }}">
+                        <label for="floatingInputNombreAcompanante">Nombre del acompañante</label>
+                        {% if form.nombre_acompanante.errors %}
+                        <div class="text-danger">
+                            {% for error in form.nombre_acompanante.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="text" name="cargo_acompanante"
+                            class="form-control borde-input {% if form.cargo_acompanante.errors %}is-invalid{% endif %}"
+                            id="floatingInputCargoAcompanante" placeholder="Cargo del acompañante"
+                            value="{{ form.cargo_acompanante.value }}">
+                        <label for="floatingInputCargoAcompanante">Cargo del acompañante</label>
+                        {% if form.cargo_acompanante.errors %}
+                        <div class="text-danger">
+                            {% for error in form.cargo_acompanante.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="date" name="fecha"
+                            class="form-control borde-input fecha {% if form.fecha.errors %}is-invalid{% endif %}"
+                            id="floatingInputFecha" placeholder="Fecha" value="{{ form.fecha.value }}">
+                        <label for="floatingInputFecha">Fecha</label>
+                        {% if form.fecha.errors %}
+                        <div class="text-danger">
+                            {% for error in form.fecha.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+              
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="time" name="hora_salida"
+                            class="form-control borde-input hora {% if form.hora_salida.errors %}is-invalid{% endif %}"
+                            id="floatingInputHoraSalida" placeholder="Hora de salida"
+                            value="{{ form.hora_salida.value }}">
+                        <label for="floatingInputHoraSalida">Hora de salida</label>
+                        {% if form.hora_salida.errors %}
+                        <div class="text-danger">
+                            {% for error in form.hora_salida.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 margen">
+                    <div class="form-floating">
+                        <input type="time" name="hora_entrada"
+                            class="form-control borde-input hora {% if form.hora_entrada.errors %}is-invalid{% endif %}"
+                            id="floatingInputHoraEntrada" placeholder="Hora de entrada"
+                            value="{{ form.hora_entrada.value }}">
+                        <label for="floatingInputHoraEntrada">Hora de entrada</label>
+                        {% if form.hora_entrada.errors %}
+                        <div class="text-danger">
+                            {% for error in form.hora_entrada.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-lg-6 margen">
+                    <div class="form-floating">
+                        <input type="number" name="kilometraje_salida"
+                            class="form-control borde-input {% if form.errors.kilometraje_salida %}is-invalid{% endif %}"
+                            id="floatingInputKilometrajeSalida" placeholder="Kilometraje de Salida"
+                            value="{{ form.kilometraje_salida.value }}">
+                        <label for="floatingInputKilometrajeSalida">Kilometraje de Salida</label>
+                        {% if form.kilometraje_salida.errors %}
+                        <div class="text-danger">
+                            {% for error in form.kilometraje_salida.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6 margen">
+                    <div class="form-floating">
+                        <input type="number" name="kilometraje_entrada"
+                            class="form-control borde-input {% if form.errors.kilometraje_entrada %}is-invalid{% endif %}"
+                            id="floatingInputKilometrajeEntrada" placeholder="Kilometraje de entrada"
+                            value="{{ form.kilometraje_entrada.value }}">
+                        <label for="floatingInputKilometrajeEntrada">Kilometraje de Entrada</label>
+                        {% if form.kilometraje_entrada.errors %}
+                        <div class="text-danger">
+                            {% for error in form.kilometraje_entrada.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6 margen">
+                    <div class="form-floating">
+                        <input type="text" name="motivo_salida"
+                            class="form-control borde-input {% if form.motivo_salida.errors %}is-invalid{% endif %}"
+                            id="floatingInputMotivoSalida" placeholder="Motivo de salida"
+                            value="{{ form.motivo_salida.value }}">
+                        <label for="floatingInputMotivoSalida">Motivo de salida</label>
+                        {% if form.motivo_salida.errors %}
+                        <div class="text-danger">
+                            {% for error in form.motivo_salida.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            
+                <div class="col-sm-12 col-lg-6 margen">
+                    <div class="form-floating">
+                        <select name="autorizacion"
+                            class="form-select borde-input {% if form.autorizacion.errors %}is-invalid{% endif %}"
+                            id="floatingSelectAutorizacion">
+                            <option value="" disabled selected>Seleccione una autorización</option>
+                            <option value="Diego Ramirez" {% if form.autorizacion.value == "Diego Ramirez" %}selected{% endif %}>Diego Ramirez</option>
+                            <option value="Melisa Rojas" {% if form.autorizacion.value == "Melisa Rojas" %}selected{% endif %}>Melisa Rojas</option>
+                            <option value="Natalia Ospina" {% if form.autorizacion.value == "Natalia Ospina" %}selected{% endif %}>Natalia Ospina</option>
+                            <option value="Zamir Caro" {% if form.autorizacion.value == "Zamir Caro" %}selected{% endif %}>Zamir Caro</option>
+
+                        </select>
+                        <label for="floatingSelectAutorizacion">Autorización de salida</label>
+                        {% if form.errors.autorizacion %}
+                        <div class="invalid-feedback">
+                            {{ form.errors.autorizacion|first }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+    
+                <div class="col-sm-12 col-lg-12 margen">
+                    <div class="form-floating">
+                        <input type="text" name="observaciones"
+                            class="form-control borde-input {% if form.observaciones.errors %}is-invalid{% endif %}"
+                            id="floatingInputObservaciones" placeholder="Observaciones"
+                            value="{{ form.observaciones.value }}">
+                        <label for="floatingInputObservaciones">Observaciones</label>
+                        {% if form.observaciones.errors %}
+                        <div class="text-danger">
+                            {% for error in form.observaciones.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-light boton-guardar">Actualizar Registro</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        // Seleccionamos todos los campos con la clase 'fecha' y 'hora'
+        const fechas = document.getElementsByClassName('fecha');
+        const horas = document.getElementsByClassName('hora');
+
+        // Iteramos sobre los campos de fecha y les agregamos el atributo readonly
+        for (let i = 0; i < fechas.length; i++) {
+            fechas[i].setAttribute('readonly', true);
+        }
+
+        // Iteramos sobre los campos de hora y les agregamos el atributo readonly
+        for (let i = 0; i < horas.length; i++) {
+            horas[i].setAttribute('readonly', true);
+        }
+    }
+
+    function handleMotivoSalida(selectElement) {
+        // Obtener el input de motivo_salida_otro
+        const otroField = document.getElementById("floatingMotivoOtro");
+
+        // Mostrar el campo de texto si la opción es "Otro"
+        if (selectElement.value === "Otro") {
+            otroField.style.display = "block";
+            otroField.required = true; // Hacer el campo obligatorio
+            otroField.value = ""; // Limpiar el valor si cambia
+        } else {
+            otroField.style.display = "none";
+            otroField.required = false; // No obligatorio en otras opciones
+            otroField.value = ""; // Limpiar el valor
+        }
+    }
+
+    
+</script>
+
+
+{% include "inc/footer.html" %}

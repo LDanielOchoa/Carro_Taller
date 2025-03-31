@@ -1,0 +1,24 @@
+# Ignorar entorno virtual 
+venv/
+env/
+
+# Ignorar archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar configuración local
+*.sqlite3
+*.log
+*.bak
+
+# Ignorar archivos de entorno 
+*.env
+
+# Ignorar archivos de prueba o temporales
+Proyecto/CarroTaller/test_connection.py
+
+# Ignorar configuraciones de IDEs
+.vscode/
+.idea/

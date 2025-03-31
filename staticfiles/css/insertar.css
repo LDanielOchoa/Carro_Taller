@@ -1,0 +1,193 @@
+/* Clases generales */
+.letra-insertar {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.titulo-insertar {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center;
+    color: rgb(6, 158, 6);
+}
+
+.margen {
+    margin-bottom: 1%;
+}
+
+.formulario {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+}
+
+.borde-input {
+    border: 2px solid rgb(6, 158, 6);
+}
+
+.borde-input:focus {
+    border: 2px solid rgb(6, 158, 6);
+    outline: none;
+    box-shadow: none;
+}
+
+.posicion-links {
+    margin-left: 50%;
+}
+
+.form-floating {
+    margin-bottom: 2px; 
+}
+
+.form-select {
+    appearance: none; 
+    border: 2px solid rgb(6, 158, 6); 
+    border-radius: 5px; 
+    background-color: white;
+    padding: 10px; 
+    font-size: 16px; 
+    width: 100%; 
+    color: black;
+    cursor: pointer;
+}
+
+/* Cambiar color de fondo al pasar el mouse sobre las opciones */
+.form-select option:hover {
+    background-color: rgb(6, 158, 6); /* Cambia el fondo a verde */
+    color: white; /* Cambia el texto a blanco */
+}
+
+.form-select:focus,
+.form-control:focus {
+    outline: none; 
+    border: 2px solid rgb(6, 158, 6); 
+    box-shadow: none; 
+}
+
+/* Para asegurar que los select personalizados también funcionen */
+.custom-select-container {
+    position: relative;
+}
+
+.custom-select {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-end; 
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para las opciones del dropdown personalizado */
+.custom-select-container.open .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 2px solid rgb(6, 158, 6);
+    background-color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Cambiar color al pasar el mouse por las opciones */
+.option:hover {
+    background-color: rgb(6, 158, 6);
+    color: white;
+}
+
+/* Cambio de color en iconos */
+.custom-select i {
+    font-size: 18px; 
+    color: rgb(6, 158, 6); 
+}
+
+.flatpickr-time .flatpickr-hour:hover {
+    background-color: rgb(6, 158, 6);
+}
+
+.boton-guardar {
+    border: 2px solid rgb(6, 158, 6);
+}
+
+.boton-guardar:hover {
+    background-color: rgb(6, 158, 6);
+    color: white;
+}
+
+/* Estilo básico del dropdown */
+.custom-dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-top: none;
+    z-index: 1;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: green;
+    color: white;
+}
+
+.dropdown-btn i {
+    margin-left: 10px;
+}
+
+/* Mostrar el dropdown cuando se hace click */
+.custom-dropdown.open .dropdown-menu {
+    display: block;
+}
+
+
+@media (max-width: 600px) {
+    .home {
+        margin: 50% auto  !important;
+    }
+
+    .boton-guardar{
+        margin: 5%;
+    }
+}
+
+

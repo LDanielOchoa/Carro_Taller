@@ -1,0 +1,358 @@
+{% include 'inc/header.html' %}
+{% load static %}
+<div class="container letra-insertar " style="flex: 1;">
+    <h1 class="titulo-insertar mt-5">Estado Partes del Carro</h1>
+    <div class="formulario">
+        <form method="POST" id="detalles_form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="registro_id" name="registro_id" value="{{ registro.id }}">
+
+            <div>
+                <div class="image-container">
+                    <img src="{% static 'img/carro.jpg' %}" alt="Carro" usemap="#image-map">
+
+
+                    <!-- <div>{{ estados_partes }}</div> -->
+
+
+                    <div id="detalle-puerta-y-faldon-delantero-conductor" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Puerta y Faldón Delantero Conductor</p>
+                        <select class="estado-parte" data-parte="Puerta y faldon delantero conductor">
+                            <option value="Ninguna" {% if estados_partes.puerta_faldon_delantero_conductor == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.puerta_faldon_delantero_conductor == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.puerta_faldon_delantero_conductor == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.puerta_faldon_delantero_conductor == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+
+                    </div>
+
+                    <div id="detalle-puerta-trasera-conductor" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Puerta Trasera Conductor</p>
+                        <select class="estado-parte" data-parte="Puerta trasera conductor" >
+                            <option value="Ninguna" {% if estados_partes.puerta_trasera_conductor == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.puerta_trasera_conductor == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.puerta_trasera_conductor == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.puerta_trasera_conductor == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-puerta-y-faldon-delantero-copiloto" class="parte-detalle"
+                        style="display:none; position: absolute;top: 40%;">
+                        <p>Puerta y Faldón delantero Copiloto</p>
+                        <select class="estado-parte" data-parte="Puerta y faldon delantero copiloto" >
+                            <option value="Ninguna" {% if estados_partes.puerta_faldon_delantero_copiloto == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.puerta_faldon_delantero_copiloto == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.puerta_faldon_delantero_copiloto == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.puerta_faldon_delantero_copiloto == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+
+                    <div id="detalle-puerta-trasera-copiloto" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Puerta Trasera Copiloto</p>
+                        <select class="estado-parte" data-parte="Puerta trasera copiloto" >
+                            <option value="Ninguna" {% if estados_partes.puerta_trasera_copiloto == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.puerta_trasera_copiloto == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.puerta_trasera_copiloto == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.puerta_trasera_copiloto == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-techo-y-capot" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Techo y capot</p>
+                        <select class="estado-parte" data-parte="Techo y capot" >
+                            <option value="Ninguna" {% if estados_partes.techo_capot == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.techo_capot == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.techo_capot == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.techo_capot == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-boomper-delantero" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Bomper delantero</p>
+                        <select class="estado-parte" data-parte="Boomper delantero" >
+                            <option value="Ninguna" {% if estados_partes.boomper_delantero == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.boomper_delantero == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.boomper_delantero == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.boomper_delantero == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+
+
+                    <div id="detalle-boomper-trasero-y-tapamaleta" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Bomper trasero y tapamaleta</p>
+                        <select class="estado-parte" data-parte="Boomper trasero y tapamaleta" >
+                            <option value="Ninguna" {% if estados_partes.boomper_trasero_tapamaleta == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.boomper_trasero_tapamaleta == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.boomper_trasero_tapamaleta == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.boomper_trasero_tapamaleta == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-llanta-delantera-izquierda" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Llanta delantera izquierda</p>
+                        <select class="estado-parte" data-parte="Llanta delantera izquierda" >
+                            <option value="Ninguna" {% if estados_partes.llanta_delantera_izquierda == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.llanta_delantera_izquierda == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.llanta_delantera_izquierda == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.llanta_delantera_izquierda == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-llanta-trasera-izquierda" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Llanta trasera izquierda</p>
+                        <select class="estado-parte" data-parte="Llanta trasera izquierda" >
+                            <option value="Ninguna" {% if estados_partes.llanta_trasera_izquierda == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.llanta_trasera_izquierda == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.llanta_trasera_izquierda == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.llanta_trasera_izquierda == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-llanta-delantera-derecha" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Llanta delantera derecha</p>
+                        <select class="estado-parte" data-parte="Llanta delantera derecha" >
+                            <option value="Ninguna" {% if estados_partes.llanta_delantera_derecha == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.llanta_delantera_derecha == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.llanta_delantera_derecha == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.llanta_delantera_derecha == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-llanta-trasera-derecha" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Llanta trasera derecha</p>
+                        <select class="estado-parte" data-parte="Llanta trasera derecha" >
+                            <option value="Ninguna" {% if estados_partes.llanta_trasera_derecha == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.llanta_trasera_derecha == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.llanta_trasera_derecha == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.llanta_trasera_derecha == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-faldon-trasero-izquierdo" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Faldón Trasero Izquierdo</p>
+                        <select class="estado-parte" data-parte="Faldon trasero izquierdo" >
+                            <option value="Ninguna" {% if estados_partes.faldon_trasero_izquierdo == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.faldon_trasero_izquierdo == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.faldon_trasero_izquierdo == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.faldon_trasero_izquierdo == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+
+                    <div id="detalle-faldon-trasero-derecho" class="parte-detalle"
+                        style="display:none; position: absolute; top: 40%;">
+                        <p>Faldón Trasero Derecho</p>
+                        <select class="estado-parte" data-parte="Faldon trasero derecho" >
+                            <option value="Ninguna" {% if estados_partes.faldon_trasero_derecho == "Ninguna" %}selected{% endif %}>Ninguna</option>
+                            <option value="Fisura" {% if estados_partes.faldon_trasero_derecho == "Fisura" %}selected{% endif %}>Fisura</option>
+                            <option value="Manchado" {% if estados_partes.faldon_trasero_derecho == "Manchado" %}selected{% endif %}>Manchado</option>
+                            <option value="Rayón" {% if estados_partes.faldon_trasero_derecho == "Rayón" %}selected{% endif %}>Rayón</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" name="" class="btn btn-light boton-guardar mt-4 mb-2"
+                    id="guardar_detalles">Guardar detalles</button>
+
+                <map name="image-map">
+                    <area class="seleccionable" href="" title="puerta y faldón delantero conductor"
+                        data-parte="puerta-y-faldon-delantero-conductor" alt="puerta y faldón delantero conductor"
+                        coords="48,57,74,36" shape="rect">
+                    <area class="seleccionable" href="" title="puerta trasera conductor"
+                        data-parte="puerta-trasera-conductor" alt="puerta trasera conductor" coords="103,35,78,57"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="puerta y faldón delantero copiloto"
+                        data-parte="puerta-y-faldon-delantero-copiloto" alt="puerta y faldón delantero copiloto"
+                        coords="94,121,117,140" shape="rect">
+                    <area class="seleccionable" href="" title="puerta trasera copiloto"
+                        data-parte="puerta-trasera-copiloto" alt="puerta trasera copiloto" coords="65,120,89,141"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="techo y capot" data-parte="techo-y-capot"
+                        alt="techo y capot" coords="166,100,214,19" shape="rect">
+                    <area class="seleccionable" href="" title="boomper delantero" data-parte="boomper-delantero"
+                        alt="boomper delantero" coords="276,55,232,34" shape="rect">
+                    <area class="seleccionable" href="" title="boomper trasero y tapamaleta"
+                        data-parte="boomper-trasero-y-tapamaleta" alt="boomper trasero y tapamaleta"
+                        coords="232,117,277,138" shape="rect">
+                    <area class="seleccionable" href="" title="llanta delantera izquierda"
+                        data-parte="llanta-delantera-izquierda" alt="llanta delantera izquierda" coords="28,48,41,64"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="llanta trasera izquierda"
+                        data-parte="llanta-trasera-izquierda" alt="llanta trasera izquierda" coords="129,47,108,65"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="llanta delantera derecha"
+                        data-parte="llanta-delantera-derecha" alt="llanta delantera derecha" coords="140,130,123,151"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="llanta trasera derecha"
+                        data-parte="llanta-trasera-derecha" alt="llanta trasera derecha" coords="42,129,60,149"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="faldón trasero izquierdo"
+                        data-parte="faldon-trasero-izquierdo" alt="faldon trasero izquierdo" coords="132,30,149,55"
+                        shape="rect">
+                    <area class="seleccionable" href="" title="faldón trasero derecho"
+                        data-parte="faldon-trasero-derecho" alt="faldon trasero derecho" coords="19,118,37,137"
+                        shape="rect">
+                </map>  
+            </div>
+
+
+            <div id="selecciones" style="margin-top: 20px; border: 1px solid black;">
+                <h3>Selecciones:</h3>
+                <ol id="lista-selecciones">
+                    {% for parte, estado in estados_partes.items %}
+                        <li>{{ parte|title }}: {{ estado }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const seleccionables = document.querySelectorAll('area.seleccionable');
+    const detalleParts = document.querySelectorAll('.parte-detalle');
+    const selectedParts = {};
+    const listaSelecciones = document.getElementById('lista-selecciones');
+
+    // Inicialmente ocultar todos los detalles
+    detalleParts.forEach(detalle => detalle.style.display = 'none');
+
+    // Manejo de clic en las áreas del mapa
+    seleccionables.forEach(area => {
+        area.addEventListener('click', function (e) {
+            e.preventDefault();
+            const parte = this.dataset.parte;
+            const detalleParte = document.getElementById('detalle-' + parte);
+            if (detalleParte) {
+                detalleParts.forEach(detalle => detalle.style.display = 'none');
+                detalleParte.style.display = 'block';
+            }
+        });
+    });
+
+    // Manejo de cambios en los selects
+    document.querySelectorAll('.estado-parte').forEach(select => {
+        select.addEventListener('change', function () {
+            const parte = select.dataset.parte;
+            const valor = select.value;
+            selectedParts[parte] = valor;
+
+            if (listaSelecciones) {
+                listaSelecciones.innerHTML = '';
+                for (const [parte, valor] of Object.entries(selectedParts)) {
+                    const li = document.createElement('li');
+                    li.textContent = `${parte}: ${valor}`;
+                    listaSelecciones.appendChild(li);
+                }
+            }
+        });
+    });
+
+    // Obtener el valor de 'registro_id' desde la URL y rellenarlo en el formulario
+    const params = new URLSearchParams(window.location.search);
+    const registroId = params.get('registro_id'); // Obtener el valor de 'registro_id'
+    if (registroId) {
+        document.getElementById('registro_id').value = registroId;  // Rellenar el campo oculto con el valor
+    }
+
+    // Envío del formulario usando AJAX
+    document.getElementById('detalles_form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevenir el envío normal del formulario
+
+        const registroId = document.getElementById('registro_id').value;
+        if (!registroId) {
+            alert('Falta el registro_id.');
+            return;
+        }
+
+        const detalles = [];
+
+        document.querySelectorAll('.estado-parte').forEach(function (selectElement) {
+            const parte = selectElement.getAttribute('data-parte');
+            const estado = selectElement.value;
+
+            // Verificar que cada select tenga un valor antes de añadirlo
+            if (estado) {
+                detalles.push({ parte, estado });
+            }
+        });
+
+        if (detalles.length === 0) {
+            alert('Debe seleccionar al menos un estado para las partes.');
+            return;
+        }
+
+        const data = {
+            registro_id: parseInt(registroId, 10),  // Asegurarse de que el registro_id sea un número
+            detalles: detalles
+        };
+
+        console.log(data);
+
+        fetch(`/registros/detalleRegistro/${registroId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name="csrfmiddlewaretoken"]').value,
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert('Error: ' + data.error);
+            } else {
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                }
+            }
+        })
+        .catch(error => {
+            alert('Error en la solicitud: ' + error);
+        });
+    });
+
+    function handleSelectChange(event, photoUploadId) {
+        const photoUploadDiv = document.getElementById(photoUploadId);
+        if (event.target.value === "rayon" || event.target.value === "fisura") {
+            photoUploadDiv.style.display = "block";
+        } else {
+            photoUploadDiv.style.display = "none";
+            document.getElementById(photoUploadId).querySelector('input').value = "";
+        }
+    }
+
+    // Seleccionar todos los selects
+    const selects = document.querySelectorAll('.estado-parte');
+
+    // Agregar evento de cambio a cada select
+    selects.forEach(select => {
+        select.addEventListener('change', function () {
+            const contenedor = this.closest('.parte-detalle');
+            contenedor.style.display = 'none';
+        });
+    });
+});
+
+
+</script>
+
+
+
+{% include 'inc/footer.html' %}

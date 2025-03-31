@@ -1,0 +1,78 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    margin: 0 auto;
+    text-align: center;
+    width: 30%;
+}
+
+.titulo-inicio {
+    margin-bottom: 25px;
+    text-align: center;
+    color: rgb(6, 158, 6);
+}
+
+.boton-iniciar{
+    border: 2px solid rgb(6, 158, 6);
+    margin-top: 5%;
+}
+
+.boton-iniciar:hover{
+    background-color: rgb(6, 158, 6);
+    color: white;
+}
+ 
+@media (max-width: 600px) {
+    
+    .titulo-inicio{
+        margin-top: 50% !important;
+    }
+
+    .form {
+      width: 60%;
+    }
+
+    .borde-input{
+        margin: 1%;
+    }
+
+    .boton-iniciar{
+        margin: 5%;
+    }
+  }
+  
+  /* Estilos para pantallas medianas (desde 601px hasta 1024px) */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .form {
+      width: 60%;
+    }
+
+    .borde-input{
+        margin: 1%;
+    }
+
+    .boton-iniciar{
+        margin: 5%;
+    }
+  }
+
+
+  .mensaje-error {
+    color: red;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    color: green;
+    font-weight: bold;
+}
+
+.mensaje-generico {
+    color: black;
+}
+  

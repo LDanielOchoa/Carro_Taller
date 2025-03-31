@@ -1,0 +1,45 @@
+{% include "inc/header.html" %}
+
+<div class="container letra-insertar" style="flex: 1;">
+    <h1 class="titulo-inicio mt-5">Crear Nuevo Usuario</h1>
+    {% if messages %}
+    <div style="text-align: center;">
+        {% for message in messages %}
+            <p class="{% if message.tags == 'error' %}mensaje-error{% elif message.tags == 'success' %}mensaje-exito{% else %}mensaje-generico{% endif %}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 margen">
+                    <div class="form-floating">
+                        <input type="number" name="cedula" class="form-control borde-input" placeholder="Cedula" id="floatingInputCedula">
+                        <label for="floatingInputCedula">Cédula</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-12 margen">
+                    <div class="form-floating">
+                        <input type="text" name="nombre" class="form-control borde-input" placeholder="Nombre Completo" id="floatingInputNombre">
+                        <label for="floatingInputNombre">Nombre Completo</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-12 margen mt-2">
+                    <div class="form-floating">
+                        <input type="password" name="password" class="form-control borde-input" placeholder="Contraseña" id="floatingInputContrasena" autocomplete="current-password">
+                        <label for="floatingInputContrasena">Contraseña</label>   
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light boton-iniciar">Crear Usuario</button>
+        </form>
+    </div>
+</div>
+
+{% include "inc/footer.html" %}

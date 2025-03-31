@@ -1,0 +1,47 @@
+{% include "inc/header.html" %}
+
+<div class="container letra-insertar" style="flex: 1;">
+    <h1 class="titulo-insertar mt-5">Subir Fotos de Evidencia</h1>
+    <div class="formulario">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% if error_general %}
+                <div class="text-danger" style="text-align: center;">
+                    <p class="mensaje-error">{{ error_general }}</p>
+                </div>
+            {% endif %}
+
+            <div class="row">
+                {% for parte in partes_danadas %}
+                    <div class="col-sm-12 col-lg-4 margen">
+                        <div class="form-floating">
+                            <input type="file" name="imagenes_{{ parte }}" class="form-control" accept="image/jpeg, image/png" multiple>
+                            <label for="imagenes_{{ parte }}">{{ parte }}</label>
+                            <div>
+                                <label for="fotoanterior_{{ parte }}">Foto anterior:</label>
+                                {% for foto in fotos %}
+                                    {% if foto.parte == parte %}
+                                        <div>
+                                            <img src="{{ foto.imagen.url }}" alt="Foto previa de {{ parte }}" style="max-width: 100%; height: auto;" id="foto" name="foto">
+                                        </div>
+                                        <input type="hidden" name="fotoanterior_{{ parte }}" value="{{ foto.id }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+            
+                        {% if not fotos|length %}
+                            <p>No hay fotos previas disponibles para esta parte.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <button type="submit" class="btn btn-light boton-guardar">Subir fotos</button>
+        </form>
+    </div>
+</div>
+
+{% include "inc/footer.html" %}
+
